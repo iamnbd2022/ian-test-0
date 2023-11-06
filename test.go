@@ -7,19 +7,23 @@ import (
 	"github.com/iamnbd2022/ianmodules/handler"
 )
 
-var processor = handler.Processor{}
+type Test0Handler struct {
+	processor *handler.Processor
+}
 
-func register() {
+func (th *Test0Handler) register(processor *handler.Processor) error {
 	fmt.Printf("Starting to register handlers \n")
+	th.processor = processor
 	processor.RegisterRequestHandler(&handler.Matcher{Path: "_health_", Method: "*"}, handler.HealthHanlder)
 	processor.RegisterRequestHandler(&handler.Matcher{Path: "hello", Method: "*"}, func(context *handler.IanContext, req *handler.IanRequest) (*handler.IanResponse, error) {
 		return &handler.IanResponse{
 			Body: "ian"}, nil
 	})
+	return nil
 }
 
 func main() {
 	fmt.Printf("Hello ian!")
-	register()
-	entry.Start(&processor)
+	handler := Test0Handler{}
+	entry.Start("", handler.register, true, nil)
 }
