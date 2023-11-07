@@ -25,5 +25,5 @@ func (th *Test0Handler) register(processor *handler.Processor) error {
 func main() {
 	fmt.Printf("Hello ian!")
 	handler := Test0Handler{}
-	entry.Start("", handler.register, true, nil)
+	entry.Start("test-1.ian", handler.register, true, nil)
 }
