@@ -2,7 +2,7 @@ module github.com/iamnbd2022/ian-test-0
 
 go 1.18
 
-require github.com/iamnbd2022/ianmodules v0.0.0-20231107101117-50d34086eadc
+require github.com/iamnbd2022/ianmodules v0.0.0-20231110034156-8c78456a67af
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
